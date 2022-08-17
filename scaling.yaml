@@ -15,4 +15,4 @@ spec:
       name: cpuutilization
       target:
         type: Utilization
-        averageUtilization: 2
+        averageUtilization: 40
