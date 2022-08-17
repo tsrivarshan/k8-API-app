@@ -26,17 +26,17 @@ spec:
               secretKeyRef:
                 name: dbsecret
                 key: DB_USER
-         - name: SECRET_DB_PASSWORD
+          - name: SECRET_DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: dbsecret
                 key: DB_PASSWORD
-         - name: SECRET_DB_DATABASE
+          - name: SECRET_DB_DATABASE
             valueFrom:
               secretKeyRef:
                 name: dbsecret
                 key: DB_DATABASE
- 	  - name: SECRET_DB_PORT
+ 	        - name: SECRET_DB_PORT
             valueFrom:
               secretKeyRef:
                 name: dbsecret
