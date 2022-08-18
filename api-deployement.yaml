@@ -14,6 +14,10 @@ spec:
    containers:
     - name: app-container
       image: srivarshan/sag_task:1.0.0
+      resources:
+        limits:
+          memory: "1Gi"
+          cpu: "1"
       ports:
         - containerPort: 80
       env:
