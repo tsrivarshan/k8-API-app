@@ -67,7 +67,7 @@ spec:
     - port: 3000
       targetPort: 3000
   selector:
-    app: node-api-app
+    type: node-api-app
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
