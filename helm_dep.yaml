@@ -14,41 +14,39 @@ spec:
       containers:
       - name: {{ .Values.app_name }}-container
         image: {{ .Values.imageTag }}
-        resources:
-{{ toYaml .Values.resoruces | indent 10 }}
         ports:
           - containerPort: {{ .Values.port }}
         env:
           - name: DB_HOST
             valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretFile }}
-              key: DB_HOST
+              secretKeyRef:
+                name: {{ .Values.secretFile }}
+                key: DB_HOST
           - name: DB_USER
             valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretFile }}
-              key: DB_USER
+              secretKeyRef:
+                name: {{ .Values.secretFile }}
+                key: DB_USER
           - name: DB_PASSWORD
             valueFrom:
-            secretKeyRef:
-              name: {{ .Values.secretFile }}
-              key: DB_PASSWORD
+              secretKeyRef:
+                name: {{ .Values.secretFile }}
+                key: DB_PASSWORD
           - name: DB_DATABASE
             valueFrom:
-            secretKeyRef:
-               name: {{ .Values.secretFile }}
-               key: DB_DATABASE
+              secretKeyRef:
+                name: {{ .Values.secretFile }}
+                key: DB_DATABASE
           - name: DB_PORT
             valueFrom:
-            secretKeyRef:
-               name: {{ .Values.secretFile }}
-               key: DB_PORT
+              secretKeyRef:
+                name: {{ .Values.secretFile }}
+                key: DB_PORT
           - name: PORT
             valueFrom:
-            secretKeyRef:
-               name: {{ .Values.secretFile }}
-               key: PORT
+              secretKeyRef:
+                name: {{ .Values.secretFile }}
+                key: PORT
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
