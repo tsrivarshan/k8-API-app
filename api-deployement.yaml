@@ -83,5 +83,5 @@ spec:
       target:
         type: Utilization
         averageUtilization: 40
-        periodSeconds: 120
+     
 
