@@ -19,7 +19,7 @@ spec:
           memory: "1Gi"
           cpu: "1"
       ports:
-        - containerPort: 80
+        - containerPort: 3000
       env:
         - name: DB_HOST
           valueFrom:
@@ -62,7 +62,7 @@ kind: Service
 metadata:
   name: api-app-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 3000
       targetPort: 3000
