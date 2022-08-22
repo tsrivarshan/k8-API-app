@@ -7,8 +7,8 @@ port: 3000
 secretFile: dbsecret
 replicaCount: 1
 svc_type: LoadBalancer
-serverURL: ZGF0YWJhc2UtMS5jZnZscmx5bWt4NW0udXMtZWFzdC0xLnJkcy5hbWF6b25hd3MuY29t
-dbuser: cmFnYXY=
-dbpass: cmFnYXYxMjM0
+serverURL: ZGF0YWJhc2UtMS5jcWE1dWt5eXVrd3QudXMtZWFzdC0xLnJkcy5hbWF6b25hd3MuY29t
+dbuser: c3Jp
+dbpass: c3JpMTIzNDU=
 dbname: dXNlckRC
 dbport: MzMwNg==
