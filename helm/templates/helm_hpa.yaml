@@ -1,4 +1,4 @@
-apiVersion: {{ .Values.apiversion }}
+apiVersion: {{ .Values.hpa_apiversion }}
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Values.app_name }}
