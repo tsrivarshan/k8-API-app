@@ -8,9 +8,7 @@ port: 3000
 secretFile: dbsecret
 replicaCount: 1
 svc_type: LoadBalancer
-scalepod_value: 1
-scale_periodsecond: 120
-scale_minreplicas: 1
-scale_maxreplicas: 3
+minreplicas: 1
+maxreplicas: 3
 cpu_utilization_limit: 40
 
