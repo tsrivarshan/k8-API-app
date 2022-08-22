@@ -7,12 +7,12 @@ metadata:
 spec:
   template:
     metadata:
-      name: {{ .Values.app_name }}-app
+      name: {{ .Values.app_name }}
       labels:
 {{ toYaml .Values.labels | indent 8 }}
     spec:
       containers:
-      - name: {{ .Values.app_name }}-container
+      - name: {{ .Values.app_name }}
         image: {{ .Values.imageTag }}
         ports:
           - containerPort: {{ .Values.port }}
