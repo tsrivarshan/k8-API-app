@@ -14,6 +14,13 @@ spec:
       containers:
       - name: {{ .Values.app_name }}
         image: {{ .Values.imageTag }}
+        resources:
+         limits:
+          cpu: "1"
+          memory: "1Gi"
+         requests:
+          cpu: "1"
+          memory: "500Mi"
         ports:
           - containerPort: {{ .Values.port }}
         env:
