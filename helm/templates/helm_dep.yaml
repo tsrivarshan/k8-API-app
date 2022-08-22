@@ -1,7 +1,7 @@
 apiVersion: {{ .Values.apiversion }}
 kind: Deployment
 metadata:
-  name: {{ .Values.app_name }}-dep
+  name: {{ .Values.app_name }}
   labels:
 {{ toYaml .Values.labels | indent 4 }}
 spec:
