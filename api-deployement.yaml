@@ -20,6 +20,14 @@ spec:
           cpu: "1"
       ports:
         - containerPort: 3000
+      readinessProbe:
+          periodSeconds: 15
+          timeoutSeconds: 2
+          successThreshold: 2
+          failureThreshold: 2
+          httpGet:
+            path: /health
+            port: 80
       env:
         - name: DB_HOST
           valueFrom:
@@ -55,6 +63,11 @@ spec:
  selector:
   matchLabels:
    type: node-api-app
+ strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
 
 ---
 apiVersion: v1
