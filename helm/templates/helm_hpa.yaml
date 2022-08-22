@@ -1,7 +1,7 @@
 apiVersion: {{ .Values.hpa_apiversion }}
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ .Values.app_name }}
+  name: {{ .Values.app_name }}-hpa
   annotations:
    autoscaling.alpha.kubernetes.io/behavior: '{"ScaleUp":{"StabilizationWindowSeconds":0,"SelectPolicy":"Max","Policies":[{"Type":"Pods","Value":"{{ .Values.scalepod_value}}","PeriodSeconds":"{{ .Values.scale_periodsecond}}"},{"Type":"Percent","Value":"{{ .Values.scalepercent_value}}","PeriodSeconds":"{{ .Values.scale_periodsecond}}"}]},"ScaleDown":{"StabilizationWindowSeconds":0,"SelectPolicy":"Max","Policies":[{"Type":"Pods","Value":"{{ .Values.scalepod_value}}","PeriodSeconds":"{{ .Values.scale_periodsecond}}"}]}}'
 spec:
