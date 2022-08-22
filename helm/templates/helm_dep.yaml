@@ -5,6 +5,11 @@ metadata:
   labels:
 {{ toYaml .Values.labels | indent 4 }}
 spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
       name: {{ .Values.app_name }}
@@ -14,15 +19,23 @@ spec:
       containers:
       - name: {{ .Values.app_name }}
         image: {{ .Values.imageTag }}
-        resources:
-         limits:
-          cpu: "1"
-          memory: "1Gi"
-         requests:
-          cpu: "1"
-          memory: "500Mi"
         ports:
           - containerPort: {{ .Values.port }}
+        readinessProbe:
+           periodSeconds: 15
+           timeoutSeconds: 2
+           successThreshold: 2
+           failureThreshold: 2
+           httpGet:
+             path: /health
+             port: 80
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+          requests:
+            cpu: "1"
+            memory: "500Mi"
         env:
           - name: DB_HOST
             valueFrom:
