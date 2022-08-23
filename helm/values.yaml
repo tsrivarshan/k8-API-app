@@ -8,10 +8,13 @@ port: 3000
 secretFile: dbsecret
 replicaCount: 1
 svc_type: LoadBalancer
+cpulimit: 1
+memorylimit: 1Gi
+cpurequest: 500m
+memoryrequest: 500Mi
 scalepod_value: 1
 scalepercent_value: 10
 scale_periodsecond: 10
 minreplicas: 1
 maxreplicas: 3
-cpu_utilization_limit: 40
-
+cpu_utilization_limit: 10
