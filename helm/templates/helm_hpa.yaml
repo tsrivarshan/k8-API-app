@@ -1,14 +1,14 @@
-apiVersion: autoscaling/v1
+apiVersion: {{ .Values.hpa_apiversion }}
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ .Values.app_name }}-hpa
+  name: {{ .Values.app_name }}
   annotations:
-    autoscaling.alpha.kubernetes.io/behavior: '{"ScaleUp":{"StabilizationWindowSeconds":0,"Policies":[{"Type":"Pods","Value":1,"PeriodSeconds":120},{"Type":"Percent","Value":10,"PeriodSeconds":120}]},"ScaleDown":{"StabilizationWindowSeconds":0,"Policies":[{"Type":"Pods","Value":1,"PeriodSeconds":120}]}}'
+   autoscaling.alpha.kubernetes.io/behavior: '{"ScaleUp":{"StabilizationWindowSeconds":0,"SelectPolicy":"Max","Policies":[{"Type":"Pods","Value":"{{ .Values.scalepod_value}}","PeriodSeconds":"{{ .Values.scale_periodsecond}}"},{"Type":"Percent","Value":"{{ .Values.scalepercent_value}}","PeriodSeconds":"{{ .Values.scale_periodsecond}}"}]},"ScaleDown":{"StabilizationWindowSeconds":0,"SelectPolicy":"Max","Policies":[{"Type":"Pods","Value":"{{ .Values.scalepod_value}}","PeriodSeconds":"{{ .Values.scale_periodsecond}}"}]}}'
 spec:
+  scaleTargetRef:
+    apiVersion: {{ .Values.apiversion }}
+    kind: Deployment
+    name: {{ .Values.app_name }}
   minReplicas: {{ .Values.minreplicas }}
   maxReplicas: {{ .Values.maxreplicas }}
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: node-app
   targetCPUUtilizationPercentage: {{ .Values.cpu_utilization_limit }}
