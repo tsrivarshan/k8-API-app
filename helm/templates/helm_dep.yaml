@@ -31,11 +31,11 @@ spec:
              port: 80
         resources:
           limits:
-            cpu: "1"
-            memory: "1Gi"
+            cpu: {{ .Values.cpulimit }}
+            memory: {{ .Values.memorylimit }}
           requests:
-            cpu: "1"
-            memory: "500Mi"
+            cpu: {{ .Values.cpurequest }}
+            memory: {{ .Values.memoryrequest }}
         env:
           - name: DB_HOST
             valueFrom:
